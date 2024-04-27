@@ -10,7 +10,7 @@ const Guitar = ({ guitar, addToCart }) => {
 
   return (
     <>
-      <div className="col-md-6 col-lg-4 my-4 row align-items-center">
+      <div key={id} className="col-md-6 col-lg-4 my-4 row align-items-center">
         <div className="col-4">
           <img
             className="img-fluid"
@@ -37,7 +37,6 @@ const Guitar = ({ guitar, addToCart }) => {
 
 Guitar.propTypes = {
   guitar: PropTypes.object.isRequired,
-  setCart: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
 };
 

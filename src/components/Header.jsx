@@ -7,12 +7,9 @@ const Header = ({
   increaseQuantity,
   decrementQuantity,
   clearCart,
+  isEmpty,
+  cartTotal,
 }) => {
-  const isEmpty = () => cart.length === 0;
-  const cartTotal = () => {
-    return cart.reduce((total, item) => total + item.quantity * item.price, 0);
-  };
-
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -51,7 +48,7 @@ const Header = ({
                       </thead>
                       <tbody>
                         {cart.map((guitar) => (
-                          <tr key={guitar.id}>
+                          <tr key={guitar.name}>
                             <td>
                               <img
                                 className="img-fluid"
@@ -94,7 +91,7 @@ const Header = ({
 
                     <p className="text-end">
                       Total pagar:
-                      {<span className="fw-bold">${cartTotal()}</span>}
+                      {<span className="fw-bold">${cartTotal}</span>}
                     </p>
                   </>
                 )}
@@ -120,5 +117,7 @@ Header.propTypes = {
   increaseQuantity: PropTypes.func.isRequired,
   decrementQuantity: PropTypes.func.isRequired,
   clearCart: PropTypes.func.isRequired,
+  isEmpty: PropTypes.func,
+  cartTotal: PropTypes.number,
 };
 export default Header;
